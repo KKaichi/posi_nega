@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'tweetpositivenegative'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_159200D004C34EE5BA67F159A742A20B }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_3953E089FDB64756A171B957664F3017 }}

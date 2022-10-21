@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'word-positive-negative'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_8FE74B2E58864B80A72B6F5EB71664D6 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A52E831BFA564545BDC8F91934FB8B48 }}

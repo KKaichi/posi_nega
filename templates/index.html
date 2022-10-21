@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>ポジネガ判定</title>
+  </head>
+  <body>
+    <h1>Twitter ポジネガ判定</h1>
+    <p>参考にするツイート数を選択してください．(10-100)</p>
+    <form name="form1" action="/" method="POST" onSubmit="return check()" enctype="multipart/form-data">
+      <p>
+        <select name="tweet_number" required>
+        <option value="">-----</option>
+        <script>
+          var i;
+          for(i=10; i<101; i+=10){
+            if(i=="{{number}}"){
+            document.write('<option value="'+i+'" selected>'+i+'</option>');
+            }
+            else{
+            document.write('<option value="'+i+'">'+i+'</option>');
+            }
+          }
+            
+        </script>
+        </select>
+      </p>
+      <p>検索ワードを入力してください(複数単語可能)</p>
+      <input type="text" name="contents" value="{{contents}}">
+      <input type="submit" value="送信">
+      <input type="reset" value="Reset">
+    </form>
+    {% for count in user_count%}
+      {% if loop.index == 1 %} 
+        <div>この単語を含むポジテイブなツイートが{{count}}件</div>
+      {% else %}
+        <div>この単語を含むネガティブなツイートが{{count}}件</div>
+    {% endif %}
+    {% endfor %}
+    {% for tweet in top3_positive_tweet%}
+    {% if loop.index == 1 %} 
+    <div>Positive tweet Ranking</div>
+    {% endif %}
+      <div>No. {{loop.index}}<br>{{tweet}}</div>
+    {% endfor %}
+    {% for tweet in top3_negative_tweet%}
+    {% if loop.index == 1 %} 
+    <div>Negative tweet Ranking</div>
+    {% endif %}
+      <div>No. {{loop.index}}<br>{{tweet}}</div>
+    {% endfor %}
+    <script language="JavaScript">
+    function check() {
+        if(document.form1.tweet_number.value == "") {
+            alert("数値を選択してください");
+            return false;
+        }
+        if(document.form1.contents.value == "") {
+            alert("検索ワードを入力してください");
+            return false;
+        }
+    }
+    </script>
+    
+  </body>
+</html>
+
